@@ -170,6 +170,13 @@ namespace WallWatch
                 return;
             }
 
+            if (walls.Count == 0)
+            {
+                Console.WriteLine("No wallpapers in the array.");
+                Console.WriteLine("Make sure to click \"Fetch images\" after adding directories!");
+                return;
+            }
+
             timer1.Enabled = true;
 
             letsStop.Enabled = true;
