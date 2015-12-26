@@ -162,6 +162,13 @@ namespace WallWatch
 
         private void letsBegin_Click(object sender, EventArgs e)
         {
+            if (watchListDirectories.Items.Count == 0)
+            {
+                Console.WriteLine("No directories to watch.");
+                Console.WriteLine("Add some by clicking the \"Add to watch list\" button!");
+                return;
+            }
+
             timer1.Enabled = true;
 
             letsStop.Enabled = true;
