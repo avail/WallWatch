@@ -123,7 +123,8 @@ namespace WallWatch
 
             if (watchListDirectories.Items.Count == 0)
             {
-                MessageBox.Show(this, "Nothing to watch", "POI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.WriteLine("No directories to watch.");
+                Console.WriteLine("Add some by clicking the \"Add to watch list\" button!");
                 return;
             }
 
