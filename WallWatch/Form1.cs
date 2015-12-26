@@ -164,7 +164,22 @@ namespace WallWatch
         {
             timer1.Enabled = true;
 
+            letsStop.Enabled = true;
+            letsBegin.Enabled = false;
+
+            Console.WriteLine("Started ticking...");
+
             UpdateWallpaper();
+        }
+
+        private void letsStop_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+
+            letsStop.Enabled = false;
+            letsBegin.Enabled = true;
+
+            Console.WriteLine("Stopped ticking...");
         }
 
         private Random rnd = new Random();

@@ -44,12 +44,12 @@ namespace WallWatch
             this.timeSpanBox = new System.Windows.Forms.ComboBox();
             this.timeBox = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.detectScreens = new System.Windows.Forms.Button();
             this.consoleBox = new System.Windows.Forms.GroupBox();
             this.consoleTextBox = new System.Windows.Forms.TextBox();
             this.fetchImages = new System.Windows.Forms.Button();
             this.letsBegin = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.letsStop = new System.Windows.Forms.Button();
             this.settingsGroupBox.SuspendLayout();
             this.consoleBox.SuspendLayout();
             this.SuspendLayout();
@@ -62,11 +62,11 @@ namespace WallWatch
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // checkedListBox1
+            // watchListDirectories
             // 
             this.watchListDirectories.FormattingEnabled = true;
             this.watchListDirectories.Location = new System.Drawing.Point(13, 13);
-            this.watchListDirectories.Name = "Watch list directories";
+            this.watchListDirectories.Name = "watchListDirectories";
             this.watchListDirectories.Size = new System.Drawing.Size(280, 94);
             this.watchListDirectories.TabIndex = 0;
             // 
@@ -90,7 +90,7 @@ namespace WallWatch
             this.label1.TabIndex = 2;
             this.label1.Text = "Wallpaper change every";
             // 
-            // groupBox1
+            // settingsGroupBox
             // 
             this.settingsGroupBox.Controls.Add(this.ignoreAspectRatio);
             this.settingsGroupBox.Controls.Add(this.allowSameWall);
@@ -100,7 +100,7 @@ namespace WallWatch
             this.settingsGroupBox.Controls.Add(this.timeBox);
             this.settingsGroupBox.Controls.Add(this.label1);
             this.settingsGroupBox.Location = new System.Drawing.Point(12, 171);
-            this.settingsGroupBox.Name = "groupBox1";
+            this.settingsGroupBox.Name = "settingsGroupBox";
             this.settingsGroupBox.Size = new System.Drawing.Size(281, 140);
             this.settingsGroupBox.TabIndex = 3;
             this.settingsGroupBox.TabStop = false;
@@ -128,22 +128,22 @@ namespace WallWatch
             this.allowSameWall.UseVisualStyleBackColor = true;
             this.allowSameWall.CheckedChanged += new System.EventHandler(this.allowSameWall_CheckedChanged);
             // 
-            // checkBox2
+            // fetchFromSubdirectories
             // 
             this.fetchFromSubdirectories.AutoSize = true;
             this.fetchFromSubdirectories.Location = new System.Drawing.Point(9, 69);
-            this.fetchFromSubdirectories.Name = "checkBox2";
+            this.fetchFromSubdirectories.Name = "fetchFromSubdirectories";
             this.fetchFromSubdirectories.Size = new System.Drawing.Size(144, 17);
             this.fetchFromSubdirectories.TabIndex = 6;
             this.fetchFromSubdirectories.Text = "Fetch from subdirectories";
             this.fetchFromSubdirectories.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // minimizeToTray
             // 
             this.minimizeToTray.AutoSize = true;
             this.minimizeToTray.Enabled = false;
             this.minimizeToTray.Location = new System.Drawing.Point(9, 45);
-            this.minimizeToTray.Name = "checkBox1";
+            this.minimizeToTray.Name = "minimizeToTray";
             this.minimizeToTray.Size = new System.Drawing.Size(156, 17);
             this.minimizeToTray.TabIndex = 5;
             this.minimizeToTray.Text = "Close minimizes to tray (wip)";
@@ -175,33 +175,23 @@ namespace WallWatch
             this.timeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.timeBox.TextChanged += new System.EventHandler(this.timeBox_TextChanged);
             // 
-            // detectScreens
-            // 
-            this.detectScreens.Location = new System.Drawing.Point(13, 142);
-            this.detectScreens.Name = "detectScreens";
-            this.detectScreens.Size = new System.Drawing.Size(137, 23);
-            this.detectScreens.TabIndex = 6;
-            this.detectScreens.Text = "Detect screens";
-            this.detectScreens.UseVisualStyleBackColor = true;
-            this.detectScreens.Click += new System.EventHandler(this.detectScreens_Click);
-            // 
-            // groupBox2
+            // consoleBox
             // 
             this.consoleBox.Controls.Add(this.consoleTextBox);
             this.consoleBox.Location = new System.Drawing.Point(12, 317);
-            this.consoleBox.Name = "groupBox2";
+            this.consoleBox.Name = "consoleBox";
             this.consoleBox.Size = new System.Drawing.Size(281, 191);
             this.consoleBox.TabIndex = 8;
             this.consoleBox.TabStop = false;
             this.consoleBox.Text = "Console";
             // 
-            // consoleBox
+            // consoleTextBox
             // 
             this.consoleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.consoleTextBox.Enabled = false;
             this.consoleTextBox.Location = new System.Drawing.Point(9, 20);
             this.consoleTextBox.Multiline = true;
-            this.consoleTextBox.Name = "consoleBox";
+            this.consoleTextBox.Name = "consoleTextBox";
             this.consoleTextBox.ReadOnly = true;
             this.consoleTextBox.Size = new System.Drawing.Size(266, 165);
             this.consoleTextBox.TabIndex = 0;
@@ -231,15 +221,26 @@ namespace WallWatch
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // letsStop
+            // 
+            this.letsStop.Enabled = false;
+            this.letsStop.Location = new System.Drawing.Point(12, 142);
+            this.letsStop.Name = "letsStop";
+            this.letsStop.Size = new System.Drawing.Size(138, 23);
+            this.letsStop.TabIndex = 11;
+            this.letsStop.Text = "LET\'S STOP";
+            this.letsStop.UseVisualStyleBackColor = true;
+            this.letsStop.Click += new System.EventHandler(this.letsStop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(305, 520);
+            this.Controls.Add(this.letsStop);
             this.Controls.Add(this.letsBegin);
             this.Controls.Add(this.fetchImages);
             this.Controls.Add(this.consoleBox);
-            this.Controls.Add(this.detectScreens);
             this.Controls.Add(this.settingsGroupBox);
             this.Controls.Add(this.addToWatchlist);
             this.Controls.Add(this.watchListDirectories);
@@ -265,7 +266,6 @@ namespace WallWatch
         private System.Windows.Forms.ComboBox timeSpanBox;
         private System.Windows.Forms.TextBox timeBox;
         private System.Windows.Forms.CheckBox minimizeToTray;
-        private System.Windows.Forms.Button detectScreens;
         private System.Windows.Forms.GroupBox consoleBox;
         private System.Windows.Forms.TextBox consoleTextBox;
         private System.Windows.Forms.Button fetchImages;
@@ -274,6 +274,7 @@ namespace WallWatch
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.CheckBox ignoreAspectRatio;
         private System.Windows.Forms.CheckBox allowSameWall;
+        private System.Windows.Forms.Button letsStop;
     }
 }
 
